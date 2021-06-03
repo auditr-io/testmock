@@ -12,10 +12,10 @@ type RoundTrip func(m *MockTransport, req *http.Request) (*http.Response, error)
 type MockTransport struct {
 	mock.Mock
 	http.Transport
-	roundTrip RoundTrip
+	RoundTripFn RoundTrip
 }
 
 // RoundTrip invokes the mocked roundTrip function
 func (m *MockTransport) RoundTrip(req *http.Request) (*http.Response, error) {
-	return m.roundTrip(m, req)
+	return m.RoundTripFn(m, req)
 }
