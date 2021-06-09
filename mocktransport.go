@@ -11,7 +11,6 @@ type RoundTrip func(m *MockTransport, req *http.Request) (*http.Response, error)
 // MockTransport is a mock Transport client
 type MockTransport struct {
 	mock.Mock
-	http.Transport
 	http.RoundTripper
 	RoundTripFn RoundTrip
 }
